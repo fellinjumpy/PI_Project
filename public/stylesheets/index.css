@@ -26,18 +26,11 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-div{
-	color:blue;
-}
- 
-
- 
-
 section {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 100px 80px;
+	padding: 50px 40px;
 }
 
 section:not(.hero):nth-child(even) {
@@ -73,6 +66,85 @@ section p {
 	margin-bottom: 30px;
 	text-align: center;
 }
+
+/* Styling CTA */
+
+.cta {
+	display:flex;
+	flex-flow:row nowrap;
+	justify-content: space-between;
+	align-items:stretch;
+	height:80vh;
+	width:100%;
+	min-height:0;
+	
+	padding:0 20px;
+	margin-top:40px;
+}
+.cta-image {
+	flex: 0 1 45%;
+	height:100%;
+	object-fit:cover;
+	padding:0;
+	margin:0;
+	min-height:0;
+	max-width:50%;
+}
+.second{
+	order:2;
+}
+.cta-content{
+	flex: 0 1 45%;
+	height:100%;
+	padding:0;
+	margin:0;
+	min-height :0;
+	display:flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items: flex-end;
+}
+.align-s {
+	align-items:flex-start;
+}
+.cta-content .heading-m{
+	flex: 0 1 20%;
+	text-align:center;
+	min-height:0;
+}
+
+.cta-content .cta-p {
+	flex:0 1 60%;
+	text-align:left;
+	min-height:0;
+}
+.cta-content a .btn {
+	flex: 0 1 10%;
+	text-align:center;
+	align-self: flex-end;
+	justify-self:flex-end;
+}
+.heading-m{
+	padding:0;
+	margin:0;
+	color:black;
+	font-size:1.2em;
+	font-weight:800;
+	letter-spacing:1.2px;
+}
+.cta-p{
+	padding:0;
+	margin:0;
+	font-size:1em;
+}
+
+
+.btn {
+	color:black;
+	border:1px solid black;
+}
+
+
 
 @media (max-width: 800px) {
 	section {
