@@ -1,11 +1,9 @@
-
-
 a {
 	text-decoration: none;
 	opacity: 0.75;
 	color: #fff;
 }
-
+ 
 a:hover {
 	opacity: 1;
 }
@@ -208,3 +206,4 @@ footer p {
 		padding: 20px;
 	}
 }
+

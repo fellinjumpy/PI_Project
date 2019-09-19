@@ -26,6 +26,10 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+div{
+	color:blue;
+}
+ 
 
  
 

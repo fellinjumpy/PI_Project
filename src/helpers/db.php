@@ -13,17 +13,7 @@ if($conn->connect_error){
 
 consoleLog("connected");
 
-$sql = "SELECT * FROM info";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-       
-    }
-} else {
-   consoleLog(" 0 results");
-}
+ 
 
 
 ?>
