@@ -17,8 +17,8 @@
 </head>
 <body>
      <!-- Header Element -->
-     <header class="navbar">
-        <h2> Band Name </h2>
+     <header class="navbar spaceb">
+        <h2>Beyond Birmingham</h2>
         <nav>
             <li><a href="./index.php">Home</a></li>
             <li><a href="./shop.php">Merchandise</a></li>
@@ -27,6 +27,10 @@
     </header>
     <section class=" shophero hero">
         <div class="shopBackground-image"></div>
+        <div class="hero-content-area">
+            <h1 class="brand">Merchandise!</h1>
+            <h3>Go ahead take a look around</h3>
+        </div>
     </section>
     <section class="shopContent">
         <?php

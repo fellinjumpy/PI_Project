@@ -12,27 +12,4 @@
     background-size:cover;
     z-index:-1;
 }
-.shopContent{
-    display:flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    margin: auto 0;
-}
-
-.shopItem{
-    flex: 0 1 20%;
-    height:100%;
-    max-width: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content:flex-start;
-    align-items:stretch;
-    box-shadow: 1px 1px 5px black;
-}
-
-.shopItemImg {
-    height:150px;
-    width: 100%;
-    object-fit: contain;
-
-}
+ 
