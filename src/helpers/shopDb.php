@@ -12,16 +12,12 @@ class Items {
         $username = "root";
         $password = "";
         $dbname = "band_db";
-        require 'console.php';
-       $this->conn = new mysqli($servername,$username,$password,$dbname);
+        $this->conn = new mysqli($servername,$username,$password,$dbname);
 
         if($this->conn->connect_error){
             die("connection Failed " . $conn->connect_error);
-            consoleLog("Connection Failed.");
-        }else{
-            consoleLog("connected");
+           
         }
-
     }
 
     public function getAllItems(){
@@ -31,16 +27,38 @@ class Items {
 
             //Check if we have results
             if ($result->num_rows > 0) {
+        
                 $rows = $result->fetch_all(MYSQLI_ASSOC);
-                // $num_rows = $result->num_rows ;
-                // for($i=0; $i<$num_rows; $i++){
-                //     echo implode('<p>',$rows[$i]);
-                // }
+    
             }else {
                 echo "0 results";
             }
+
             $this->rows = $rows ;
             return $this->rows;
+    }
+
+    public function getItemDetails($id){
+        
+            $data = array();
+             
+            //get user data from the database
+            $sql="SELECT * FROM proionta WHERE id = ${id}";
+            $result = $this->conn->query($sql);
+            
+    
+            if($result->num_rows > 0){
+                $userData = $result->fetch_assoc();
+                $data['status'] = 'ok';
+                $data['result'] = $userData;
+            }else{
+                $data['status'] = 'err';
+                $data['result'] = '';
+            }
+            
+            //returns data as JSON format
+            return json_encode($data);
+         
     }
 }
 

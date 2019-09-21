@@ -23,10 +23,12 @@
 	padding: 0;
 	margin: 0;
 	color: black;
-	font-size: 1.2em;
-	font-weight: 800;
+	font-size: 2em;
+	font-weight: 700;
+	font-family: 'Montserrat', sans-serif;
 	letter-spacing: 1.2px;
 }
+ 
 .section-p {
 	max-width: 775px;
 	line-height: 2;
@@ -281,9 +283,7 @@ header nav li {
 
 
 /* CARDS */
-
-
-.itemCard{
+.shopContent .itemCard{
 	flex: 0 1 25%;
 	margin:20px;
 	width:100%;
@@ -295,9 +295,13 @@ header nav li {
 	box-shadow: 1px 1px 5px black;
 	border-top-right-radius: 15px;
 	border-top-left-radius:15px;
-
-	
 }
+
+.itemCard:hover{
+	box-shadow: 2px 2px 15px black;
+}
+
+
 
 .itemCardImg {
 	border-top-right-radius: 15px;
@@ -311,15 +315,19 @@ header nav li {
 .itemCardContent{
 	padding:20px;
 	flex: 1 1 40%;
-	
 	display:flex;
 	flex-direction:column;
 	justify-content: space-between;
 	width:100%;
+	font-family: 'Montserrat', sans-serif;
+	
+	
 }
+
 .itemCardHeader{
 	flex: 0 1 20%;
-	
+	font-style: italic;
+	font-weight:700;
 }
 .itemCardStock{
 	flex : 0 1 10%;
@@ -338,6 +346,74 @@ header nav li {
 	font-size:1.3em;
 	flex:  0 1 20%;
 }
+
+/* DETAIL CARD */
+.itemDetailSection .itemCard{
+	margin:20px;
+	box-shadow: 2px 2px 15px black;
+	height:100%;
+	width:100%;
+	display:flex;
+	flex-flow:row nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+}
+.itemDetailCardImg {
+	flex: 0 1 50%;
+	height:100%;
+	max-height:100%;
+
+}
+
+.itemDetailContent{
+	flex: 0 1 50%;
+	padding:20px;
+	height:100%;
+	display:flex;
+	flex-direction:column;
+	justify-content: space-between;
+}
+.itemCardHeader {
+	align-self:center;
+}
+
+.itemCardDescription{
+	align-self:flex-start;
+	font-family: 'Montserrat', sans-serif;
+	font-weight:400;
+	font-style: italic;
+	letter-spacing: 1px;
+	line-height: 1.5em;
+}
+.itemDetailContent .itemCardPrice {
+	align-self: flex-end;
+}
+.itemDetailContent .itemCardStock ,.itemDetailContent  .itemCardPrice{
+	
+	font-weight:700;
+	font-style: italic;
+	font-size:1.3em;
+
+}
+.itemDetailContent .itemCardIcons{
+	justify-content: flex-end;
+}
+
+.cancel {
+	padding:15px;
+	padding-left:0;
+	font-size:1.5em;
+	top:0;
+	right:0;
+	color:gray;
+	transition: color 0.2s linear;
+}
+.cancel:hover{
+	color:black;
+}
+
+
+/* ICONS */
 .icon{
 	font-size: 1.5em;
 	color:#571506;
@@ -347,10 +423,10 @@ header nav li {
 }
 .fa-cart-plus{
 	color:black;
-	transition:font-size 0.5s linear;
+	transition:font-size 0.2s linear;
 }
 .fa-cart-plus:hover{
-	font-size:1.8em;
+	font-size:1.7em;
 	
 }
 .icon:not(.fa-cart-plus):hover{
