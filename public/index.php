@@ -71,14 +71,10 @@
             </p>
         <hr>
         <!-- MAIL FORM -->
-        <?php
-            if(isset($_POST['submit'])){
-               include("../src/helpers/mailSubscription.php");
-            }
-        ?>
-        <form action="" class="form" method="POST">
-            <input class="input" type="email" name="email" placeholder="Email">
-            <input class="btn" type="submit" name="submit">
+        <h4 class="subSuccess" style="display:none;">Subscription successful with mail <span class="successMail">Mail@Mail.com</span> Welcome!</h4>
+        <form action="" class="form"  >
+            <input class="input" id="subEmail" type="email" name="email" placeholder="Email">
+            <button class="btn" type="submit" id="subBtn">Submit </button>
         </form>
     </section>
 
@@ -98,7 +94,14 @@
         </div>
     </footer>
      
+    <script
+			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+              crossorigin="anonymous">
+              </script>
     
+    <script src="../src/javascript/index.js"></script>
+     
 </body>
 
 </html>

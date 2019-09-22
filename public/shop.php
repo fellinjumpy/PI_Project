@@ -42,27 +42,7 @@
     </section>
     <!-- Shop content -->
     <section class="shopContent">
-        <?php
-            include("../src/helpers/shopDb.php");
-            $data = new Items();
-            $data->connect();
-            $items = $data->getAllItems();
-            foreach ($items as $item) {
-                echo "<div id=\"${item['id']} \" class=\"itemCard\">";
-                echo "<img class=\"itemCardImg\" src='${item['eikona']}'/>".
-                    "<div class=\"itemCardContent\">".
-                        "<h2 class=\"itemCardHeader\">${item['titlos']} </h2>". 
-                        "<p class=\"itemCardStock\">STOCK: ${item['apothema']}</p>". 
-                        "<p class=\"itemCardPrice\">${item['timi']}</p>".
-                        "<div class=\"itemCardIcons\">
-                            <i   class=\"fas fa-heart icon fav\"></i>
-                            <i   class=\"fas fa-cart-plus icon cart\"></i>
-                        </div>".
-                    "</div>"
-                    ;
-                echo "</div>";
-                }
-        ?>            
+        <!-- To be filled by jquery with data from DB -->
     </section>
     <!-- Item Details -->
 
@@ -86,19 +66,47 @@
 
     <!-- CART -->
     <div id="userCart" class="userCart">
-
             <!-- Modal content -->
             <div class="userCart-Content">
                 <span class="close">&times;</span>
                 <p>Your Cart</p>
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Title</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Item Title</td>
+                                <td>123.52</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="cartBottom">
+                    <div class="cartInfo">
+                        <p>TOTAL</p>
+                    </div>
+                    <div class="cartUserOptions">
+                        <button>Check Out</button>
+                    </div>
+                    
+                </div>
             </div>
 
     </div>
+
+
     <script
 			  src="https://code.jquery.com/jquery-3.4.1.js"
 			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 			  crossorigin="anonymous"></script>
-    
+    <script src ='../src/javascript/item.js'></script>
     <script src="../src/javascript/shop.js"></script>
 </body>
 </html>

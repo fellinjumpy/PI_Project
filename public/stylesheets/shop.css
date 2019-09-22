@@ -113,3 +113,38 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+  .table-container{
+    margin-right:auto;
+    margin-left:auto;
+    padding-right:15px;
+    padding-left:15px;
+    width:100%;
+
+  }
+
+  .table{
+    width:100%;
+    margin-bottom:20px;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  .table>thead>tr>th {
+    vertical-align: bottom;
+    border-bottom:2px solid #ddd;
+    padding:8px;
+    line-height: 1.42;
+  }
+
+  th{
+    text-align:left;
+  }
+
+  .table>tbody>tr>td{
+    padding: 8px;
+    line-height: 1.42;
+    vertical-align: top;
+    border-top:1px solid #ddd;
+  }

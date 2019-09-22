@@ -1,9 +1,4 @@
 <?php
- 
- 
-
-
-
 class Items {
     private $rows;
     protected $conn = null;
