@@ -3,6 +3,7 @@
     Dark Blue #09184a
 	font-family: 'Montserrat', sans-serif;
 */
+
 * {
 	margin: 0;
 	padding: 0;
@@ -16,7 +17,6 @@ html {
 }
 
 body {
-
 	margin: 0;
 	padding: 0;
 	-ms-overflow-style: none;
@@ -30,75 +30,4 @@ body::-webkit-scrollbar {
 }
 
 
-section {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 50px 40px;
-}
 
-section:not(.hero):nth-child(even) {
-	background-color: #f5f5f5;
-}
-
-/*Footer Section*/
-
-footer {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background-color: #19191a;
-	color: #fff;
-	padding: 20px 0;
-	height: 30vh;
-}
-
-.footer-contact {
-	flex: 0 1 80%;
-	width: 100%;
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: space-between;
-}
-
-.footer-contact h3 {
-	margin: 0;
-	padding: 0;
-	flex: 0 1 30%;
-
-}
-
-.footer-contact ul {
-	flex: 0 1 60%;
-	display: flex;
-	flex-flow: row nowrap;
-
-}
-
-.footer-contact ul li {
-	flex: 0 1 20%;
-}
-
-
-
-@media (max-width: 800px) {
-	section {
-		padding: 50px 20px;
-	}
-}
-
-@media (max-width: 1100px) {
-	footer {
-		flex-direction: column;
-	}
-
-	footer p {
-		text-align: center;
-		margin-bottom: 20px;
-	}
-
-	footer ul li {
-		margin: 0 8px;
-	}
-}

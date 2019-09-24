@@ -1,89 +1,123 @@
-var items = [];
+var itemObjArr = [];
 var cart = [];
 var detailID ;
+var total = 0;
+var detailedItem;
 
+//On Document Ready
 $(document).ready(function () {
     getAllItems();
     $(".badge").hide();
+    addGeneralEventHandlers();
+    
 });
 
-function addEventHandlers() {
-    //ADD TO FAVORITES
-    $(".itemCardFavIcon").click(function (e) {
-        e.stopPropagation();
-        console.log("Added on favorites");
-    })
-    // OPEN USERS CART
-    $("#userCartBtn").click(function () {
-        $("#userCart").slideDown("slow");
-        var total = 0;
-        cart.forEach((element,index) => {
-            var price = calculatePrice(element.amount,element.item.item.timi)
-            var itemRowElement = element.item.createItemRow(element.amount ,price,index);
-            total += price;
-             $(".table-body").append(itemRowElement);
-        })
-        $(".itemAmount").change(function(){
-            var itemId = $(this).attr("id");
-            //var itemChanged = cart.find(item => item.item.item.id == itemId)
-            var itemChanged = cart[itemId];
-            itemChanged.amount = parseInt($(this).val());
-            total -=parseFloat($(`tr#${itemId} .rowPrice`).text())
-            var newPrice = calculatePrice(itemChanged.amount,itemChanged.item.item.timi);
-            total += newPrice;
-            $(`tr#${itemId} .rowPrice`).text(`${newPrice} €`);
-            $(".cartInfo p").text(`Total: ${total} €`);    
-        })
-        $(".cartInfo p").text(`Total: ${total} €`);
-        $(".cartUserOptions button").one("click",function(){
-            checkOut()
-        })
-    });
 
-    $(".close").click(function () {
-        
-        $(".table-body").empty();
-        $("#userCart").hide();
-    });
+/** UI functions  */
 
-    $(window).click(function (event) {
-        if (event.target.id == $("#userCart").attr("id")) {
-            $("#userCart").hide();
-            console.log("emptied");
-        }
-    });
-
-    //SET HANDLER FOR ITEM DETAILS
-    $(".shopContent .itemCard").click(function () {
-        var itemId = $(this).attr("id");
-        detailID = itemId;
-        showItemDetails( );
-    });
+//Displays Added to card alert
+function displayAlert(string) {
+    $(".alert span").text(string);
+    $("#slide")
+        .slideDown(1000)
+        .delay(1500)
+        .slideUp("slow", function () {});
 }
-
 
 //Shows Item Details
 function showItemDetails( ) {
-  
-    var amount = 1;
+    
+    populateDetails();
     //hide all items
     $(".shopContent").hide(); 
 
-    //Get the id of the item clicked and create an element
-    var detailedItem = items.find(item => item.item.id == detailID);
-    detailedItem.createDetailedItem();
-
     //Show the detailed item.
     $(".itemDetailSection").show().css("display", "flex").fadeIn().focus();
-    //$(".cart").attr("class","fas fa-cart-plus icon cart");
+
+    // Add to cart button enable TODO:more UX
     $(".cart").text("Add to Cart").attr("disabled",false);
-    //Add handlers
 
-    $(".cancel").click(hideItemDetails);
+}
+
+//Close item Details
+function hideItemDetails() {
+    $(".itemDetailSection").hide();
+    //reset input
+    $(".itemDetailCardAmount input").val(1);
+    $(".shopContent").show();
+}
+
+
+
+
+
+
+/** GENERAL FUNCTIONS */
+
+//Price calc
+function calculatePrice(amount,price){
+    var price = parseFloat(price);
+    var total = Math.floor( (price*amount) *100) /100;
+    return total;
+    
+}
+
+
+
+
+/** Population functions ,Dynamicly create elements  */
+
+
+
+//Populates shop using the results from database request
+function populateShop(data){
+    data.forEach(item => {
+        //Model each item 
+        var itemObj = new Item(item);
+
+        //Store The item object  in a global array.
+        itemObjArr.push(itemObj);
+
+        //create item element for shop content 
+        var itemElement = itemObj.createItemElement()
+        //Append to shop.
+        $(".shopContent").append(itemElement);
+    });
+}
+
+// Calculate the price of the items on cart   and populate the cart Table
+function populateCart(){
+    
+    cart.forEach((element,index) => {
+        var price = calculatePrice(element.amount,element.item.item.timi)
+        var itemRowElement = element.item.createItemRow(element.amount ,price,index);
+        total += price;
+         $(".table-body").append(itemRowElement);
+    });
+    cartAmountHandlers();
+    //Set users cart Total price   
+    $(".cartInfo p").text(`Total: ${total} €`);
+}
+
+//Populate Details
+function populateDetails(){
+    //Get the id of the item clicked and populate the details section
+    detailedItem = itemObjArr.find(item => item.item.id == detailID);
+    detailedItem.createDetailedItem();
     //Set input max attribute based on the stock
-
     $(".detailInput").attr("max", detailedItem.item.apothema);
+    addEventHandlersOnDetails();
+}
 
+
+
+
+/**  CREATING HANDLERS functions */
+
+//Add handlers on Details
+function addEventHandlersOnDetails(){
+    var amount =1;
+    $(".cancel").click(hideItemDetails);
     //Handlers conserning the amount chosen.
     //  due to a custom spinner for the number input we override the step functions
     $(".itemDetailCardAmount #up").click(function () {
@@ -95,68 +129,112 @@ function showItemDetails( ) {
     });
 
     $(".itemDetailCardAmount input").change(function () {
-        console.log("Amount changed");
-        console.log($(this).val());
+        
         amount =parseInt($(this).val());
         var total = calculatePrice(amount,detailedItem.item.timi);
-        console.log(total);
+        
         $(".itemDetailContent .itemCardPrice").text(`${total} €`);
-        //amount input changed SHOW CHANGES
+        
     });
 
     //Add to cart handler
     $(".cart").one("click" , (event)=>{
-        event.stopPropagation();
-        // //Find the  id of the item
-        // var parent = $(this).parents('div[class="itemCard"]').eq(0);
-        // var itemId = $(parent).attr("id");
-        // console.log(parent);
-        // console.log(itemId);
-        
-        // //find the item obj using the id 
-        // var item = items.find(item => item.item.id == itemId);
-        
-        console.log(`ADDED ON CART! ${detailedItem.item} with amount ${amount}`);
+        event.stopPropagation();        
+
+        //console.log(`ADDED ON CART! ${detailedItem.item} with amount ${amount}`);
         
         cart.push(
             {
             item: detailedItem,
             amount:amount
             });
-        
+
+        amount = 1;
         //  var itemRowElement = detailedItem.createItemRow();
         //  $(".table-body").append(itemRowElement);
 
         if (cart.length == 1) {
             $(".badge").show();
         }
-
         $(".badge").text(cart.length);
-       // $(".cart").attr("class","fas fa-check-circle cart");
+        // $(".cart").attr("class","fas fa-check-circle cart");
         $(".cart").text("In Cart!").attr("disabled",true);
-
+        
         displayAlert("Item added to Cart!")
         event.preventDefault();
     });
+}
+
+//Add general event handlers
+function addGeneralEventHandlers(){
+
+    //If user clicks outside of Cart
+    $(window).click(function (event) {
+        if (event.target.id == $("#userCart").attr("id")) {
+            $("#userCart").hide();
+            console.log("emptied");
+        }
+    });
+
+    // cart Clicked
+    $("#userCartBtn").click(function () {
+        //Show Cart
+        $("#userCart").slideDown("slow");
+            populateCart();
+    });
+
+    //Closed cart
+    $(".close").click(function () {
+        $(".table-body").empty();
+        $("#userCart").hide();
+    });
+
+    //Cart Check Out button
+    $(".cartUserOptions button").one("click",function(){
+        
+        checkOut();
+        //TODO Checkout validation and UX
+    });
+    
     
 
-
 }
 
-//Close item Details
-function hideItemDetails() {
-    $(".itemDetailSection").hide();
-    $(".shopContent").show();
+function cartAmountHandlers(){
+    $(".itemAmount").change(function(){
+        var itemId = $(this).attr("id");
+        var itemChanged = cart[itemId];
+        itemChanged.amount = parseInt($(this).val());
+        total -=parseFloat($(`tr#${itemId} .rowPrice`).text())
+        var newPrice = calculatePrice(itemChanged.amount,itemChanged.item.item.timi);
+        total += newPrice;
+        $(`tr#${itemId} .rowPrice`).text(`${newPrice} €`);
+        $(".cartInfo p").text(`Total: ${total} €`);    
+    });
 }
 
-function calculatePrice(amount,price){
-    var price = parseFloat(price);
-    var total = Math.floor( (price*amount) *100) /100;
-    return total;
-    
+//Add event handlers for thumbnail items
+function addEventHandlersOnItems(){
+    //Favorite button click
+    $(".itemCardFavIcon").click(function (e) {
+        e.stopPropagation();
+        console.log("Added on favorites");
+    });
+    //SET HANDLER FOR ITEM DETAILS
+    $(".shopContent .itemCard").click(function () {
+        var itemId = $(this).attr("id");
+        detailID = itemId;
+        showItemDetails();
+    });
 }
 
+/** AJAX REQUESTS */
+
+/**
+ * After user Checks out . Request changes on Database
+ */
 function checkOut(){
+    $(".itemDetailCardAmount input").val(1);
     var itemsToBuy = []
     cart.forEach(itemCart=>{
         itemsToBuy.push({itemId:itemCart.item.item.id,
@@ -201,15 +279,8 @@ function getAllItems() {
         },
         success: function (data) {
             if (data.status == 'ok') {
-                data.result.forEach(item => {
-                    //Model each item 
-                    var itemObj = new Item(item);
-                    items.push(itemObj);
-                    //create item element for shop content
-                    var itemElement = itemObj.createItemElement()
-                    $(".shopContent").append(itemElement);
-                });
-                addEventHandlers();
+                populateShop(data.result);
+                addEventHandlersOnItems();
             } else {
                 alert("Items not found...");
             }
@@ -218,14 +289,6 @@ function getAllItems() {
             console.log("error" + er);
         }
     });
-
 }
 
-//Displays Added to card alert
-function displayAlert(string) {
-    $(".alert span").text(string);
-    $("#slide")
-        .slideDown(1000)
-        .delay(1500)
-        .slideUp("slow", function () {});
-}
+

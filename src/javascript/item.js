@@ -7,20 +7,18 @@ class Item {
         this.total = 0;
     }
     createItemElement(){
-        this.calculatePrice();
+        
         var container = $("<div></div>").attr("id",this.item.id).addClass("itemCard");
         var img = $("<img/>").addClass("itemCardImg").attr("src",this.item.eikona);
         var iconFavSolid = $("<i></i>").addClass("fas fa-heart fa-stack-1x solid ");
         var iconFavOutline = $("<i></i>").addClass("far fa-heart fa-stack-1x   outline");
         var iconStack = $("<span></span>").addClass("itemCardFavIcon fa-stack fa-2x ").append([iconFavSolid,iconFavOutline]);
-        
         var content = $("<div></div>").addClass("itemCardContent");
         var h2 = $("<h2></h2").addClass("itemCardHeader").text(this.item.titlos);
         var stock = $("<p></p>").addClass("itemCardStock").text( (this.item.apothema != 0) ? `${this.item.apothema} Left` : `Out of Stock!`);
         var price = $("<p></p>").addClass("itemCardPrice").text(`${this.item.timi} €`);
         var imgContainer = $("<div></div>").append([img,iconStack,h2,stock]).addClass("itemCardImgContainer");
         content.append([price])
-        console.log(this);
         container.append([imgContainer,content]);
         this.container = container;
         
@@ -34,8 +32,6 @@ class Item {
         var tdAmount = $("<td></td>").append(amountInput);
         var row = $("<tr></tr>").append([tdId,tdTitle,tdAmount,tdPrice]).attr("id",id);
         amountInput.val(amount);
- 
-        console.log(row);
         return row;
     }
     createDetailedItem(){
@@ -49,16 +45,12 @@ class Item {
         
     }
      
-    setAmount(amount){
-        console.log("set");
-        this.amount = amount;
-        this.calculatePrice();
-    }
-    calculatePrice(){
-            var price = parseFloat(this.item.timi);
-            var total = Math.floor( (price*this.amount) *100) /100;
-            this.total = total;
-            console.log(this.total);
+    
+    // calculatePrice(){
+    //         var price = parseFloat(this.item.timi);
+    //         var total = Math.floor( (price*this.amount) *100) /100;
+    //         this.total = total;
+    //         console.log(this.total);
             
-    }
+    // }
 }
