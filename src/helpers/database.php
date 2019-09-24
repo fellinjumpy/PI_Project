@@ -1,9 +1,14 @@
 <?php
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "band_db";
+     $servername = "localhost";
+     $username = "root";
+     $password = "";
+     $dbname = "band_db";
+
+    // $servername = "localhost";
+    // $username = "id10976808_db_admin";
+    // $password = "dbadmin";
+    // $dbname = "id10976808_band_db	";
     $conn = new mysqli($servername,$username,$password,$dbname);
 
     if($conn->connect_error){
@@ -22,6 +27,9 @@
                 break;
             case 'getItemDetails':
                 getItemDetails();
+                break;
+                case 'checkOut':
+                checkOut();
                 break;
             default:
                 die('Access denied for this function!');
@@ -87,10 +95,40 @@ function getItemDetails(){
                 $data['status'] = 'err';
                 $data['result'] = '';
             }
-            
+            $conn->close();
             //returns data as JSON format
             echo json_encode($data);
 }
 
+function checkOut(){
+    global $conn;
+    
+    $cart = json_decode($_POST['cart']);
+     
+    $data = array();
+    $results = array();
+    
+    $sql ="";
+
+     foreach($cart as $item){
+         $sql .= " UPDATE proionta set apothema = apothema - {$item->amount} 
+         Where id = {$item->itemId};";
+     }
+      
+     if (mysqli_multi_query($conn,$sql))
+     {
+       do
+         {
+            $data['status'] = 'ok';
+         }
+       while (mysqli_next_result($conn));
+     }else{
+        $data['status'] = 'error';
+     }
+
+
+      $conn->close();
+      echo json_encode($data);
+}
 
 ?>

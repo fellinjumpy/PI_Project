@@ -342,7 +342,6 @@ header nav li {
 	flex-flow:row nowrap;
 	justify-content:space-between;
 	align-items:center;
-	
 	font-size:1.3em;
 	flex:  0 1 20%;
 }
@@ -417,7 +416,7 @@ header nav li {
 .icon{
 	font-size: 1.5em;
 	color:#571506;
-	padding-left:15px;
+	padding-left:10px;
 	transition:color  0.2s linear;
 	z-index:5;
 }
@@ -429,7 +428,31 @@ header nav li {
 	font-size:1.7em;
 	
 }
+
+.solid{
+	color:transparent;
+	transition: color 0.2s linear;
+}
+.outline{
+	color:white;
+	transition: color 0.2s linear;
+}
 .icon:not(.fa-cart-plus):hover{
 
 	color:red;
+}
+.itemCardImgContainer{
+	position:relative;
+}
+.itemCardFavIcon{
+	z-index: 2;
+	padding:10px;
+	top:0;
+	right:0;
+}
+.itemCardFavIcon:hover  .solid , .itemCardFavIcon:hover .outline{
+	color:red;
+}
+.fa-stack{
+	position: absolute!important;
 }

@@ -53,6 +53,19 @@
                             <h2 class="itemCardHeader heading-m">Item Title</h2>
                             <p class="itemCardDescription">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia assumenda aliquid vitae praesentium, laborum laboriosam eum delectus iusto labore! Unde non ducimus aut explicabo culpa aliquam voluptas quia laboriosam molestias.</p>
                             <p class="itemCardStock">Stock</p>
+                            <p>Choose your amount</p>
+                            
+                            <div class="itemDetailCardAmount">
+                                <button id="down" type="button" onclick="this.parentNode.querySelector('[type=number]').stepDown();">
+                                    -
+                                </button>
+
+                                <input type="number" name="number" min="1" max="100" value="1" class="inputNumbera">
+
+                                <button id="up" type="button" onclick="this.parentNode.querySelector('[type=number]').stepUp();">
+                                    +
+                                </button>
+                            </div>
                             <p class="itemCardPrice">PRICE!!</p>
                             <div class="itemCardIcons">
                                 <i   class="fas fa-heart icon fav"></i>
@@ -74,24 +87,26 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th>Id</th>
                                 <th>Title</th>
+                                <th>Amount</th>
                                 <th>Price</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
+                        <tbody class="table-body">
+                              <tr>
+                                <!-- <td>1</td>
                                 <td>Item Title</td>
-                                <td>123.52</td>
-                            </tr>
+                                <td> <input type="number" min=1 value=1 class="itemAmount"> </td>
+                                <td>123.52</td> -->
+                            </tr>  
                         </tbody>
                     </table>
                 </div>
-                <div class="cartBottom">
-                    <div class="cartInfo">
+                <div class="cartInfo">
                         <p>TOTAL</p>
                     </div>
+                <div class="cartBottom">
                     <div class="cartUserOptions">
                         <button>Check Out</button>
                     </div>

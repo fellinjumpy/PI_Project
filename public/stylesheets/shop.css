@@ -79,7 +79,7 @@
 .userCart {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 10; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -147,4 +147,69 @@
     line-height: 1.42;
     vertical-align: top;
     border-top:1px solid #ddd;
+  }
+  .cartInfo  {
+    border-top : 2px solid rgb(150, 150, 150);
+    width:100%;
+    padding:10px;
+    text-align: right;
+  }
+  .cartInfo p {
+    font-family: "Montesarrat",sans-serif;
+    font-size:1.5em;
+    letter-spacing: 1.2px;
+    margin-right:20px;
+  }
+  .cartUserOptions{
+    width:100%;
+    margin-top:10px;
+    padding:20px;
+    text-align:right;
+  }
+  .cartUserOptions button{
+    padding: 10px;
+    background-color:#fff;
+    color:#555;
+    font-size:1em;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    border:1px solid #555;
+    border-radius: 5px;
+  }
+  .cartUserOptions button:hover{
+    box-shadow: 1px 1px 2px #555;
+  }
+  .itemAmount{
+    width: 45px;
+    height: 30px;
+    line-height: 1.65;
+    text-align: center;
+    float: left;
+    display: block;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #eee;
+  }
+  .itemAmount:focus{
+    outline: 0;
+  }
+
+  input {
+    text-align:center;
+  }
+  
+  input::-webkit-outer-spin-button:not(.itemAmount) ,
+  input::-webkit-inner-spin-button:not(.itemAmount) {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+
+  .itemDetailCardAmount{
+    display:flex;
+    flex-flow: row nowrap;
+    width:100%;
+    flex: 0 1 15%;
+    
   }
