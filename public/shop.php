@@ -41,41 +41,61 @@
         </div>
     </section>
     <!-- Shop content -->
-    <section class="shopContent">
+    <section class="shopContent"  >
         <!-- To be filled by jquery with data from DB -->
+        <!-- <div id="1" class="itemCard">
+            <div class="itemCardImgContainer">
+                <img class="itemCardImg" src="https://images.unsplash.com/photo-1507041957456-9c397ce39c97?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80">
+                <span class="itemCardFavIcon fa-stack fa-2x">
+                    <i class="fas fa-heart fa-stack-1x solid" aria-hidden="true"></i>
+                    <i class="far fa-heart fa-stack-1x outline" aria-hidden="true"></i>
+                </span>
+                <h2 class="itemCardHeader2">Album v1 CD</h2>
+                <p class="itemCardStock2">In Stock: 40</p>
+            </div>
+            <div class="itemCardContent">
+                 <h2 class="itemCardHeader">Album v1 CD</h2>
+                <p class="itemCardStock">In Stock: 40</p> 
+                <p class="itemCardPrice2">6.30 €</p>
+            </div> -->
+        </div>
     </section>
     <!-- Item Details -->
 
-    <section class="itemDetailSection">
-                <div class="itemCard" id="">
-                       <img class="itemDetailCardImg" src="https://images.unsplash.com/photo-1437153225860-b850e2a4d0fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
+        <section class="itemDetailSection" >
+        <div class="itemCard" id="4">
+                       <img class="itemDetailCardImg" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="">
                        <div class="itemDetailContent">
-                            <h2 class="itemCardHeader heading-m">Item Title</h2>
-                            <p class="itemCardDescription">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia assumenda aliquid vitae praesentium, laborum laboriosam eum delectus iusto labore! Unde non ducimus aut explicabo culpa aliquam voluptas quia laboriosam molestias.</p>
-                            <p class="itemCardStock">Stock</p>
-                            <p>Choose your amount</p>
-                            
+                            <h2 class="detailHeader heading-m">T-Shirt</h2>
+                            <p class="itemCardDescription">Morbi sollicitudin auctor odio, non elementum felis molestie at. Donec dignissim imperdiet tempor. Nulla augue libero, tempus sed fringilla id</p>
+                            <p class="detailStock">89 Left in stock!</p>
+                            <div class ="itemChoices">
                             <div class="itemDetailCardAmount">
-                                <button id="down" type="button" onclick="this.parentNode.querySelector('[type=number]').stepDown();">
+                                <button id="down" type="button" onclick="this.parentNode.querySelector('[type=number]').stepDown();" class="stepButton">
                                     -
                                 </button>
 
-                                <input type="number" name="number" min="1" max="100" value="1" class="inputNumbera">
+                                <input type="number" name="number" min="1" max="89" value="1" class="detailInput">
 
-                                <button id="up" type="button" onclick="this.parentNode.querySelector('[type=number]').stepUp();">
+                                <button id="up" type="button" onclick="this.parentNode.querySelector('[type=number]').stepUp();" class="stepButton">
                                     +
                                 </button>
                             </div>
-                            <p class="itemCardPrice">PRICE!!</p>
+                            <p class="itemCardPrice">19.30 €</p>
+                            </div>
                             <div class="itemCardIcons">
-                                <i   class="fas fa-heart icon fav"></i>
-                                <i   class="fas fa-cart-plus icon cart"></i>
+                                <button class="addtoF addtoC"> 
+                                     <i class="fas fa-heart " aria-hidden="true"></i>
+                                </button>
+                                <!-- <i class="fas fa-cart-plus icon cart" aria-hidden="true"></i> -->
+                                <button class="addtoC cart">Add to Cart</button>
                             </div>
                        </div>
-                       <i class="fas fa-times cancel"></i>
+                       <i class="fas fa-times cancel" aria-hidden="true"></i>
                 </div>
-                
-    </section>
+
+        </section>
+    
 
     <!-- CART -->
     <div id="userCart" class="userCart">

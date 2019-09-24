@@ -75,13 +75,14 @@ function showItemDetails( ) {
 
     //Show the detailed item.
     $(".itemDetailSection").show().css("display", "flex").fadeIn().focus();
-    $(".cart").attr("class","fas fa-cart-plus icon cart");
+    //$(".cart").attr("class","fas fa-cart-plus icon cart");
+    $(".cart").text("Add to Cart").attr("disabled",false);
     //Add handlers
 
     $(".cancel").click(hideItemDetails);
     //Set input max attribute based on the stock
 
-    $(".itemDetailCardAmount input").attr("max", detailedItem.item.apothema);
+    $(".detailInput").attr("max", detailedItem.item.apothema);
 
     //Handlers conserning the amount chosen.
     //  due to a custom spinner for the number input we override the step functions
@@ -99,7 +100,7 @@ function showItemDetails( ) {
         amount =parseInt($(this).val());
         var total = calculatePrice(amount,detailedItem.item.timi);
         console.log(total);
-        $(".itemDetailContent .itemCardPrice").text(`Price: ${total} €`);
+        $(".itemDetailContent .itemCardPrice").text(`${total} €`);
         //amount input changed SHOW CHANGES
     });
 
@@ -131,7 +132,9 @@ function showItemDetails( ) {
         }
 
         $(".badge").text(cart.length);
-        $(".cart").attr("class","fas fa-check-circle cart");
+       // $(".cart").attr("class","fas fa-check-circle cart");
+        $(".cart").text("In Cart!").attr("disabled",true);
+
         displayAlert("Item added to Cart!")
         event.preventDefault();
     });
@@ -172,7 +175,8 @@ function checkOut(){
         success: function (data) {
             if (data.status == 'ok') {
                 console.log(data);
-
+                //TODO : ADD SUCCESS MESSAGE
+                location.reload();
             } else {
                 alert("Error...");
             }
