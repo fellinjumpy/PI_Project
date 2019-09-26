@@ -26,7 +26,13 @@ $(document).ready(function() {
                 }
             });
             return false;
-    })
+    });
+
+ 
+
+ 
+ 
+
 })
 
 function subSuccess(mail){

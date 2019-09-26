@@ -25,7 +25,7 @@
     <!-- Header Element -->
     <header class="navbar">    
         <nav >
-            <li  ><a href="#aboutUs">About us</a></li>
+            <li  ><a href="#shows" id="aShows">Shows</a></li>
             <li><a href="./shop.html">Merchandise</a></li>
             <li><a href="#footer">Contact us</a></li>
         </nav>
@@ -38,32 +38,81 @@
             <h1 class="brand"> Beyond Birmingham </h1>
         </div>
     </section>
-
+    <!-- <div class="parallax"></div> -->
     <!-- TOURS SHOWS -->
-    <section class="cta" id="aboutUs">
-        <img  src="https://images.unsplash.com/photo-1471958680802-1345a694ba6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1132&q=80" class="cta-image">
-        <div class="cta-content">
-            <h3 class="heading-m">Tours and Shows</h3>
-            <p class="cta-p">Touring and giging in lots of different places
-                is our thing! Wanna see us up close?! Check out 
-                our tour and show dates!
-            </p>
-            <a class="btn" href="./tours.php">Read more</a>
-        </div>
-    </section>
+    
+    <section class="tours parallax" id="shows">
+        <h1 class="heading-l">Upcoming DAtes</h1>
+         <div class="tours-content">    
+                <div class="tours-item">
+                        <h3 class="tours-item-date">10.10.19</h3>
+                        <div class="tours-item-info">
+                                <h3>MoDESTO, CA</h3>
+                                <h5>Blues knightly 65-A.</h5>
+                                <p>Fine arts or arts that are fine.</p>
+                        </div>
+                        <button class="tours-item-tickets">TICKETS</button>
+                        
+                 </div>
+                 <hr>
+                 <div class="tours-item">
+                        <h3 class="tours-item-date">20.12.19</h3>
+                        <div class="tours-item-info">
+                                <h3>ATHENS, GR</h3>
+                                <h5>High Palace Auditorium</h5>
+                                <p>Wave it goodbye and apologise.</p>
+                        </div>
+                        <button class="tours-item-tickets">TICKETS</button>
+                 </div>
+                 <hr>
+                 <div class="tours-item">
+                        <h3 class="tours-item-date">24.02.20</h3>
+                        <div class="tours-item-info">
+                                <h3>London, UK</h3>
+                                <h5>Baker Street 235B</h5>
+                                <p>Relive the relatives of realisiation.</p>
+                        </div>
+                        <button class="tours-item-tickets">TICKETS</button>
+                 </div>
+                 
+             </div>
+         </div>
 
-    <!-- History and members -->
-    <section class="cta">
-        <img src="https://images.unsplash.com/photo-1518911710364-17ec553bde5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" class="second cta-image ">
-        <div class="cta-content align-s">
-            <h3 class="heading-m">Our story.</h3>
-            <p class="cta-p">You up for more details?.Want to read where-how-why we started
-                this band and the whole story behind it? Want to read more about each and everyone of us?
-                This is the place to do it!
-            </p>
-            <a class="btn" href="./history.html">Read more</a>
-        </div>
     </section>
+    <section class="news">
+        <h1 class="heading-l">Latest News</h1>
+        <hr>
+        <ul class="grid">
+                <li class="small" style="background-image: url('https://images.unsplash.com/photo-1472554117599-50e86139f312?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80');">
+                    <h2>SUNSET GIGS</h2>
+                    <div class="gridLink">         
+                        <a href="#shows">Read More <i class="fas fa-angle-double-right"></i></a>
+                    </div>
+                </li>
+                
+                <li class="large" style="background-image: url('https://images.unsplash.com/photo-1568057568339-b9466c2ee5fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80');">
+                    <h2>NOW ON CASSETTE, CHECK THE STORE!</h2>
+                    <div class="gridLink">         
+                        <a href="./shop.html">Read More <i class="fas fa-angle-double-right"></i></a>
+                    </div>
+                </li>
+                <li class="large" style="background-image: url('https://images.unsplash.com/photo-1569404874008-8e7a6669f594?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1301&q=80');">
+                    <h2>NEW ALBUM COMMING UP</h2>
+                    <div class="gridLink">         
+                        <a href="./shop.html">Read More <i class="fas fa-angle-double-right"></i></a>
+                    </div>
+                </li>
+
+                <li class="small" style="background-image: url('https://images.unsplash.com/photo-1508186736123-44a5fcb36f9f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80');">
+                    <h2>NEW MERCH!</h2>
+                    <div class="gridLink">         
+                        <a href="./shop.html">Read More <i class="fas fa-angle-double-right"></i></a>
+                    </div>
+                </li>
+              </ul>
+
+    </section>
+     
 
     <!-- CONTACT SECTION -->
     <section class="contact">
@@ -81,17 +130,18 @@
     </section>
 
     <!-- FOOTER  -->
-    <footer id="footer">
+    <footer class="footer">
         <div class="footer-contact">
-            <h3>Band Name</h3>    
-            <ul>
+            <h3 class="heading-l">BEYOND Birmingham</h3>    
+               
+        </div>
+        <ul class="socials">
                 <li><a href="#"><i class="fab fa-twitter "></i> </a></li>
                 <li><a href="#"><i class="fab fa-facebook "></i> </a></li>
-                <li><a href="#"><i class="fab fa-snapchat "></i> </a></li>
-            </ul>     
-        </div>
+                <li><a href="#"><i class="fab fa-snapchat x2"></i> </a></li>
+            </ul>  
         <div class="footer-rights">
-            <p>Images courtesy of <a href="http://unsplash.com/">unsplash</a>.</p>
+            <p>Images courtesy of <a href="http://unsplash.com/">unsplash</a></p>
         </div>
     </footer>
      

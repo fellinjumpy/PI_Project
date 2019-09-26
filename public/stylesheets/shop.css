@@ -51,29 +51,7 @@
       margin-left: -10px; 
   }
 
-  .alert{
-      bottom:0;
-      border:1px solid ;
-      border-radius:4px;
-      width:50vw;
-      height:8vh;
-      min-height:0;
-      text-align:center;
-      font-size:1.5em;
-      position:fixed;
-      background-color:#dff0d8;
-      border-color:#d6e9c6;
-      color:rgb(43, 43, 43);
-      letter-spacing:1.5px;
-      font-weight:800;
-      z-index:2;
-      margin:0 25vw;
-      
-      display:none;
-      padding:15px;
-
-
-  }
+ 
 
   /* The Modal (background) */
 .userCart {
