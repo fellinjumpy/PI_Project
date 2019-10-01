@@ -26,6 +26,8 @@ class Item {
     }
     createItemRow(amount,price ,id){
         var deleteItem = $("<td></td>").html("<i class='fas fa-trash'></i>");
+        deleteItem.addClass("deleteFromCart");
+        deleteItem.attr("id",id);
         var tdId = $("<td></td>").text(this.itemData.id);
         var tdTitle = $("<td></td>").text(this.itemData.titlos);
         var tdPrice =$("<td></td>").text(price + " €").addClass("rowPrice");

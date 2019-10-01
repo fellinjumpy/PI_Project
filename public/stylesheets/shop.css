@@ -1,6 +1,10 @@
  .shophero{
      min-height:50vh;
  }
+ .deleteFromCart:hover{
+   color:red;
+   z-index: 20;
+ }
 .hero .shopBackground-image{
     position:absolute;
     top:0;

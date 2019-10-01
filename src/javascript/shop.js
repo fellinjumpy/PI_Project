@@ -220,6 +220,19 @@ function cartAmountHandlers() {
         $(`tr#${itemId} .rowPrice`).text(`${newPrice} €`);
         $(".cartInfo p").text(`Total: ${total} €`);
     });
+    $(".deleteFromCart").click(function(){
+        
+        var itemId = $(this).attr("id");
+        cart.splice(itemId,1)
+        $(".table-body").empty();
+        populateCart();
+        if (cart.length == 1) {
+            $(".badge").show();
+        }else{
+            $(".badge").hide();
+        }
+        $(".badge").text(cart.length);
+    });
 }
 
 //Add event handlers for thumbnail items
